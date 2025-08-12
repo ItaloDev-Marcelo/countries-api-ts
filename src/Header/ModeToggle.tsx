@@ -1,4 +1,4 @@
-import { FaRegMoon } from "react-icons/fa6";
+import { FaRegMoon } from "react-icons/fa";
 
 type modeProps  = {
   DarkMode: () => void

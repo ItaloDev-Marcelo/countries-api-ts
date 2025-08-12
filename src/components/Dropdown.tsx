@@ -2,7 +2,6 @@ import Button from "./Button";
 import { IoIosArrowDown } from "react-icons/io";
 
 interface DropdownProps {handleSelect: (value: string) => void}
-
 const Dropdown = ({handleSelect}:DropdownProps ) => {
   return (
     <details className="dropdown w-50">
