@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+body {
+    overflow-x: hidden;
+}
+
+@theme {
+  --breakpoint-tb: 60rem;
+  --breakpoint-nt: 85rem;
+}
+
+
+input[type='text']:focus {
+    outline: 0;
+    border: 0;
+}
