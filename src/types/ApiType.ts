@@ -5,7 +5,7 @@ export interface ApiTypes {
   alpha3Code: string,
   callingCodes: string[],
   capital?: string,
-  altSpellings: string[],
+  altSpellings?: string[],
   subregion: string,
   region: string,
   population: number,
