@@ -88,44 +88,50 @@ const CountryPageLayout = () => {
           }
          
            {selected && (
-              <section className="w-full h-50vh bg-red absolute top-[20%] left-0 z-10000">
-                     <button onClick={HideDetails}> <FaArrowLeft size={30} />  Back</button>
-                     <div>
-                         <figure>
+              <section className="w-full h-50vh bg-red absolute top-[20%] left-0 z-10000 p-2 flex felx-col lg:flex-row">
+                      <div className="flex flex-col lg:flex-row justify-between ">
+                          <div>
+                            <button className="flex items-center justify-center border-1 w-[100px] h-[50px] ml-2 lg:ml-13" onClick={HideDetails}> <FaArrowLeft size={20} />  Back</button>
+                  
+                         <figure className='flex flex-col w-[350px] md:w-[370px] tb:w-[445px]  xl:w-[550px] p-3 lg:ml-10 mt-10'>
                               <img src={selected.flags.svg} alt={selected.name} />
                          </figure>
-                         <section>
-                             <h3>{}</h3>
-                             <ul>
-                                 <li>Native Name: {selected.nativeName}</li>
-                                 <li>Population: {selected.population}</li>
-                                 <li>Region: {selected.region}</li>
-                                 <li>Sub Region: {selected.subregion}</li>
-                                 <li>Capital: {selected.capital}</li>
+                          </div>
+                         <section className="lg:w-[670px] p-2.5 lg:p-15 lg:mt-10 lg:ml-4 ">
+                              <h3 className="font-black text-[1.4em] my-4">{selected.name}</h3>
+                             <div className="lg:grid lg:grid-cols-2">
+                          
+                             <ul className="my-5 ">
+                                 <li className="my-2.5"><span className="font-semibold">Native Name:</span> {selected.nativeName}</li>
+                                 <li className="my-2.5"><span className="font-semibold">Population:</span> {selected.population}</li>
+                                 <li className="my-2.5"><span className="font-semibold">Region:</span> {selected.region}</li>
+                                 <li className="my-2.5"><span className="font-semibold">Sub Region:</span> {selected.subregion}</li>
+                                 <li className="my-2.5"><span className="font-semibold">Capital:</span> {selected.capital}</li>
                              </ul>
-             
-                             <ul>
-                                 <li>Top Level Domain: {selected.topLevelDomain}</li>
-                                 <li>Currencies: {selected.currencies?.map((item) => item.code)}</li>
-                                 <li>Languages: 
-                                   <div>
+
+                               <ul className="mt-10 mb-4 lg:mt-7">
+                                 <li className="my-2.5"><span className="font-semibold">Top Level Domain:</span> {selected.topLevelDomain}</li>
+                                 <li className="my-2.5"><span className="font-semibold">Currencies:</span> {selected.currencies?.map((item) => item.code)}</li>
+                                 <li className="my-2.5 flex"  ><span className="font-semibold mr-1">Languages: </span>
+                                     <ul className='flex'>
                                        {
                                        selected.languages.map((item) => (
-                                         <div>
-                                             {item.name}
-                                         </div>
+                                         <li>
+                                             {item.name},
+                                         </li>
                                        ))
                                        }
-                                  </div>     
+                                  </ul> 
                                  </li>
                              </ul>
              
-                             <article>
-                                 <h4>Border Countries: </h4>
-                                     <div>
+                             </div>
+                             <article className="w-auto">
+                                 <h4 className="mb-5"><span className="font-semibold ">Border Countries:</span> </h4>
+                                     <div className="grid grid-cols-2 lg:grid-cols-4 items-start gap-2 lg:gap-col-2">
                                        {
                                        selected.borders?.map((item) => (
-                                         <div>
+                                         <div className="w-[150px] lg:w-[130px] flex flex-col text-center justify-center border-1 h-[40px] font-bold">
                                             {item}
                                          </div>
                                        ))
@@ -134,7 +140,6 @@ const CountryPageLayout = () => {
                              </article>
                          </section>
                      </div>
-             
                  </section>
            )}
         </div>

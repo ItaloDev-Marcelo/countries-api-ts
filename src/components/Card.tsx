@@ -10,7 +10,7 @@ interface CardProps {
 
 }
 
-const Card = ({name, population,region,capital,img,id ,  handleDatails}:CardProps) => {
+const Card = ({name, population,region,capital,img,id,handleDatails}:CardProps) => {
 
 
   return (
