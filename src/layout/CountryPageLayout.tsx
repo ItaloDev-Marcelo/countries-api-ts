@@ -12,10 +12,9 @@ const CountryPageLayout = () => {
     const [selectValue, setSelectValue] = useState('');
     const [currentSelectedCard, setCurrentSelectedCard] = useState<string>('')
     const [details, setDetails] = useState(false)
-   //  let countriesData = Data;
+  
     const DarkMode  = () => setToggle(prevToggle => !prevToggle)
-   // const SearchCountryName = Data.
-   // filter((item) => item.name === inputValue || item.region === selectValue);
+  
 
    function FilteringData(input:string, select:string) {
      if(input.length == 0 && select.length == 0) {
@@ -89,17 +88,17 @@ const CountryPageLayout = () => {
          
            {selected && (
               <section className="w-full h-50vh bg-red absolute top-[20%] left-0 z-10000 p-2 flex felx-col lg:flex-row">
-                      <div className="flex flex-col lg:flex-row justify-between ">
+                      <div className="flex flex-col xl:flex-row justify-between ">
                           <div>
                             <button className="flex items-center justify-center border-1 w-[100px] h-[50px] ml-2 lg:ml-13" onClick={HideDetails}> <FaArrowLeft size={20} />  Back</button>
                   
-                         <figure className='flex flex-col w-[350px] md:w-[370px] tb:w-[445px]  xl:w-[550px] p-3 lg:ml-10 mt-10'>
+                         <figure className='flex flex-col w-full   xl:w-[500px] p-3 lg:ml-7 mt-10'>
                               <img src={selected.flags.svg} alt={selected.name} />
                          </figure>
                           </div>
-                         <section className="lg:w-[670px] p-2.5 lg:p-15 lg:mt-10 lg:ml-4 ">
+                         <section className="lg:w-[670px] p-2.5 lg:p-15 lg:mt-10 xl:ml-4 ">
                               <h3 className="font-black text-[1.4em] my-4">{selected.name}</h3>
-                             <div className="lg:grid lg:grid-cols-2">
+                             <div className="md:grid md:grid-cols-2">
                           
                              <ul className="my-5 ">
                                  <li className="my-2.5"><span className="font-semibold">Native Name:</span> {selected.nativeName}</li>
@@ -126,12 +125,12 @@ const CountryPageLayout = () => {
                              </ul>
              
                              </div>
-                             <article className="w-auto">
-                                 <h4 className="mb-5"><span className="font-semibold ">Border Countries:</span> </h4>
-                                     <div className="grid grid-cols-2 lg:grid-cols-4 items-start gap-2 lg:gap-col-2">
+                             <article className="w-auto md:w-[400px] tb:w-[600px] nt:w-[597px] mt-4">
+                                 <h4 className="mb-5"><span className="font-black ">Border Countries:</span> </h4>
+                                     <div className="grid grid-cols-2 tb:grid-cols-3 lg:grid-cols-4 items-start gap-2 lg:gap-col-2">
                                        {
                                        selected.borders?.map((item) => (
-                                         <div className="w-[150px] lg:w-[130px] flex flex-col text-center justify-center border-1 h-[40px] font-bold">
+                                         <div className="w-[150px] md:w-[190px] lg:w-[130px] flex flex-col text-center justify-center border-1 h-[40px] font-bold">
                                             {item}
                                          </div>
                                        ))
