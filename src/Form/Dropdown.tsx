@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "../components/Button";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
 interface DropdownProps {handleSelect: (value: string) => void}

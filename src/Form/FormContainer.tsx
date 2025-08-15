@@ -1,6 +1,6 @@
 
-import Dropdown from '../components/Dropdown';
-import ISearch from '../components/ISearch'
+import Dropdown from './Dropdown';
+import ISearch from './ISearch'
 
 interface FormProps  {
   handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void, 

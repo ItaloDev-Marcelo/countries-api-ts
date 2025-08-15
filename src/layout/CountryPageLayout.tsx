@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import Data from '../data/data.json'
 import MainWrapper from "../components/MainWrapper"
 import Card from "../components/Card"
-import { FaArrowLeft } from "react-icons/fa6";
+import DetailsSection  from '../components/DetailsSection'
 const CountryPageLayout = () => {
 
    const [toggle, setToggle] = useState(false)
@@ -12,6 +12,7 @@ const CountryPageLayout = () => {
     const [selectValue, setSelectValue] = useState('');
     const [currentSelectedCard, setCurrentSelectedCard] = useState<string>('')
     const [details, setDetails] = useState(false)
+    const [showAll, setShowAll] = useState(false)
   
     const DarkMode  = () => setToggle(prevToggle => !prevToggle)
   
@@ -26,9 +27,13 @@ const CountryPageLayout = () => {
      }
    }
 
+   const handleMore = () => {
+      setShowAll(true)
+   }
 
    const Result = FilteringData(inputValue,selectValue)
 
+   const DisplayCards = showAll ? Result : Result.slice(0, 8)
 
   
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,20 +44,15 @@ const CountryPageLayout = () => {
     const handleSelect = (value: string) => {
        setSelectValue(value)
     }
-
    
    const handleDatails = (index:string) => {
        setCurrentSelectedCard(index)
        setDetails(true)
    }
 
-
    const selectedCard = (selectedItem:string) => Data.find((item) => item.numericCode === selectedItem )
 
    const selected =  selectedCard(currentSelectedCard)
-
-   
-
 
    const HideDetails = ()  =>  {
       setDetails(false)
@@ -66,12 +66,12 @@ const CountryPageLayout = () => {
   return (
     <div>
         <Header toggle={toggle} DarkMode={DarkMode} />
-        <div className='mt-2 xl:mt-3'>
+        <div className='mt-2 xl:mt-3 '>
           {
             !details && <><Form handleSearch={handleSearch}  handleSelect={handleSelect} />
            <MainWrapper>
                 {
-                  Result.map((item) => (
+                  DisplayCards.map((item) => (
                         <Card
                         id={item.numericCode} 
                         name={item.name} 
@@ -83,63 +83,25 @@ const CountryPageLayout = () => {
                         />
                   ))
                 }
-           </MainWrapper></>
+            </MainWrapper>
+                <div className='w-full flex justify-center my-4 '> 
+                   <button onClick={handleMore} className="text-center font-black h-[45px] w-[100px] my-3.5 bg-amber-100 rounded-[5px]">More</button>
+          </div>
+             </>
           }
          
            {selected && (
-              <section className="w-full h-50vh bg-red absolute top-[20%] left-0 z-10000 p-2 flex felx-col lg:flex-row">
-                      <div className="flex flex-col xl:flex-row justify-between ">
-                          <div>
-                            <button className="flex items-center justify-center border-1 w-[100px] h-[50px] ml-2 lg:ml-13" onClick={HideDetails}> <FaArrowLeft size={20} />  Back</button>
-                  
-                         <figure className='flex flex-col w-full   xl:w-[500px] p-3 lg:ml-7 mt-10'>
-                              <img src={selected.flags.svg} alt={selected.name} />
-                         </figure>
-                          </div>
-                         <section className="lg:w-[670px] p-2.5 lg:p-15 lg:mt-10 xl:ml-4 ">
-                              <h3 className="font-black text-[1.4em] my-4">{selected.name}</h3>
-                             <div className="md:grid md:grid-cols-2">
-                          
-                             <ul className="my-5 ">
-                                 <li className="my-2.5"><span className="font-semibold">Native Name:</span> {selected.nativeName}</li>
-                                 <li className="my-2.5"><span className="font-semibold">Population:</span> {selected.population}</li>
-                                 <li className="my-2.5"><span className="font-semibold">Region:</span> {selected.region}</li>
-                                 <li className="my-2.5"><span className="font-semibold">Sub Region:</span> {selected.subregion}</li>
-                                 <li className="my-2.5"><span className="font-semibold">Capital:</span> {selected.capital}</li>
-                             </ul>
-
-                               <ul className="mt-10 mb-4 lg:mt-7">
-                                 <li className="my-2.5"><span className="font-semibold">Top Level Domain:</span> {selected.topLevelDomain}</li>
-                                 <li className="my-2.5"><span className="font-semibold">Currencies:</span> {selected.currencies?.map((item) => item.code)}</li>
-                                 <li className="my-2.5 flex"  ><span className="font-semibold mr-1">Languages: </span>
-                                     <ul className='flex'>
-                                       {
-                                       selected.languages.map((item) => (
-                                         <li>
-                                             {item.name},
-                                         </li>
-                                       ))
-                                       }
-                                  </ul> 
-                                 </li>
-                             </ul>
-             
-                             </div>
-                             <article className="w-auto md:w-[400px] tb:w-[600px] nt:w-[597px] mt-4">
-                                 <h4 className="mb-5"><span className="font-black ">Border Countries:</span> </h4>
-                                     <div className="grid grid-cols-2 tb:grid-cols-3 lg:grid-cols-4 items-start gap-2 lg:gap-col-2">
-                                       {
-                                       selected.borders?.map((item) => (
-                                         <div className="w-[150px] md:w-[190px] lg:w-[130px] flex flex-col text-center justify-center border-1 h-[40px] font-bold">
-                                            {item}
-                                         </div>
-                                       ))
-                                       }
-                                  </div>    
-                             </article>
-                         </section>
-                     </div>
-                 </section>
+               <DetailsSection HideDetails={HideDetails}  name={selected.name}
+  nativeName={selected.nativeName}
+  population={selected.population}
+  region={selected.region}
+  subregion={selected.subregion}
+  currencies={selected.currencies ?? []}
+  capital={selected.capital ?? ''}
+  svg={selected.flags.svg}
+  topLevelDomain={selected.topLevelDomain}
+  languages={selected.languages ?? []}
+  borders={selected.borders ?? []} />
            )}
         </div>
     </div>
