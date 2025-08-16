@@ -1,6 +1,4 @@
 import { FaArrowLeft } from "react-icons/fa6";
-// import type { ApiTypes } from "../types/ApiType";
-
 interface Currency {
   code: string,
   name: string,
@@ -12,18 +10,19 @@ interface Language {
 }
 
 interface DetailsProps {
-  name: string;
-  nativeName: string;
-  population: number;
-  region: string;
-  subregion: string;
-  currencies: Currency[];
-  capital: string;
-  svg: string;
-  topLevelDomain: string[];
-  languages: Language[];
-  borders: string[];
-  HideDetails: () => void;
+  name: string,
+  nativeName: string,
+  population: number,
+  region: string,
+  subregion: string,
+  currencies: Currency[],
+  capital: string,
+  svg: string,
+  topLevelDomain: string[],
+  languages: Language[],
+  borders: string[],
+  HideDetails: () => void,
+  toggle: boolean
 }
 
 const DetailsSection = ({
@@ -38,18 +37,19 @@ const DetailsSection = ({
   topLevelDomain,
   languages,
   borders,
-  HideDetails,
+  HideDetails, 
+  toggle
 }: DetailsProps) => {
   return (
-    <section className="w-full h-50vh bg-red absolute top-[20%] left-0 z-10000 p-2 flex felx-col lg:flex-row">
+    <section className={`w-full h-[100vh] pt-4  z-10000 p-2 flex felx-col lg:flex-row ${toggle ? 'bg-Blue-950  text-white' : ' text-Grey-950 bg-Grey-50'} `}>
       <div className="flex flex-col xl:flex-row justify-between ">
         <div>
           <button
-            className="flex items-center justify-center border-1 w-[100px] h-[50px] ml-2 lg:ml-13"
+            className="flex items-center justify-center border-1 w-[100px] h-[40px] ml-2 lg:ml-13"
             onClick={HideDetails}
           >
             {" "}
-            <FaArrowLeft size={20} /> Back
+            <FaArrowLeft size={15} className='mr-2' /> Back
           </button>
 
           <figure className="flex flex-col w-full   xl:w-[500px] p-3 lg:ml-7 mt-10">
@@ -102,7 +102,7 @@ const DetailsSection = ({
           </div>
           <article className="w-auto md:w-[400px] tb:w-[600px] nt:w-[597px] mt-4">
             <h4 className="mb-5">
-              <span className="font-black ">Border Countries:</span>{" "}
+              {borders.length > 0 && <span className="font-black ">Border Countries:</span>}
             </h4>
             <div className="grid grid-cols-2 tb:grid-cols-3 lg:grid-cols-4 items-start gap-2 lg:gap-col-2">
               {borders?.map((item) => (

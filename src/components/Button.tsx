@@ -3,9 +3,6 @@ interface ButtonProps {
     handleSelect: (value: string) => void
 }
 
-
-
-
 const Button = ({name, handleSelect}:ButtonProps) => {
   return <button onClick={() => handleSelect(name)}>{name}</button>
 }

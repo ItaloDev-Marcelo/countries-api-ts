@@ -64,11 +64,11 @@ const CountryPageLayout = () => {
     
 
   return (
-    <div>
+    <div className={toggle ? 'bg-Blue-950 ' : 'bg-Grey-50'}>
         <Header toggle={toggle} DarkMode={DarkMode} />
         <div className='mt-2 xl:mt-3 '>
           {
-            !details && <><Form handleSearch={handleSearch}  handleSelect={handleSelect} />
+            !details && <><Form handleSearch={handleSearch} toggle={toggle}  handleSelect={handleSelect} />
            <MainWrapper>
                 {
                   DisplayCards.map((item) => (
@@ -80,12 +80,13 @@ const CountryPageLayout = () => {
                         capital={item.capital}
                         img={item.flags.png}
                         handleDatails={handleDatails}
+                        toggle={toggle}
                         />
                   ))
                 }
             </MainWrapper>
-                <div className='w-full flex justify-center my-4 '> 
-                   <button onClick={handleMore} className="text-center font-black h-[45px] w-[100px] my-3.5 bg-amber-100 rounded-[5px]">More</button>
+                <div className='w-full flex justify-center my-4 '>   
+                   <button onClick={handleMore} className={`text-center font-semibold h-[45px] w-[100px] my-3.5  rounded-[5px] ${toggle ? 'bg-Blue-900  text-white ' : 'bg-Grey-50 text-Grey-950'}`}>More</button>
           </div>
              </>
           }
@@ -101,7 +102,9 @@ const CountryPageLayout = () => {
   svg={selected.flags.svg}
   topLevelDomain={selected.topLevelDomain}
   languages={selected.languages ?? []}
-  borders={selected.borders ?? []} />
+  borders={selected.borders ?? []}
+   toggle={toggle}
+  />
            )}
         </div>
     </div>

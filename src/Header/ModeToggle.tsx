@@ -5,7 +5,7 @@ type modeProps  = {
 }
 
 const ModeToggle = ({DarkMode}:modeProps) => {
-  return  <button onClick={DarkMode} className='flex'> <FaRegMoon size={30}/> Dark Mode </button>
+  return  <button onClick={DarkMode} className='flex border-0 outline-0 p-1 font-semibold'> <FaRegMoon size={27}/> Dark Mode </button>
 }
 
 export default ModeToggle

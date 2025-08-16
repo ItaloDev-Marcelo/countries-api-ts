@@ -9,6 +9,12 @@ body {
 @theme {
   --breakpoint-tb: 60rem;
   --breakpoint-nt: 85rem;
+  --color-Blue-900: #2B3945;
+--color-Blue-950 : #202C37;
+--color-Grey-950: #111517;
+--color-Grey-400: #808080;
+--color-Grey-50: #FCFCFC;
+--color-White-zero: #FFFFFF;
 }
 
 
