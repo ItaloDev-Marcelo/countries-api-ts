@@ -14,7 +14,7 @@ const Card = ({name, population,region,capital,img,id,handleDatails, toggle}:Car
 
   return (
    <div onClick={() =>  handleDatails(id)} className={`card   w-[97%] md:w-[370px] tb:w-[445px] 
-    xl:w-[370px]  nt:w-75 m-2 shadow  ${toggle ? 'bg-Blue-900 text-white ' : 'bg-Grey-50 text-Grey-950'}`} key={id}>
+    xl:w-[370px]  nt:w-75 m-2 shadow  transition duration-500 ease-in-out ${toggle ? 'bg-Blue-900 text-white ' : 'bg-Grey-50 text-Grey-950'}`} key={id}>
   <figure>
     <img
       src={img}

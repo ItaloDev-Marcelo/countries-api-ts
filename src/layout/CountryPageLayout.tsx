@@ -7,7 +7,7 @@ import Card from "../components/Card"
 import DetailsSection  from '../components/DetailsSection'
 const CountryPageLayout = () => {
 
-   const [toggle, setToggle] = useState(false)
+    const [toggle, setToggle] = useState(false)
     const [inputValue, setInputValue] = useState('');
     const [selectValue, setSelectValue] = useState('');
     const [currentSelectedCard, setCurrentSelectedCard] = useState<string>('')
@@ -59,12 +59,9 @@ const CountryPageLayout = () => {
       setCurrentSelectedCard('')
    }
    
-   
-   console.log(currentSelectedCard, details)
-    
 
   return (
-    <div className={toggle ? 'bg-Blue-950 ' : 'bg-Grey-50'}>
+    <div className={toggle ? 'bg-Blue-950 transition duration-700 ease-in-out ' : 'bg-Grey-50 transition duration-700 ease-in-out'}>
         <Header toggle={toggle} DarkMode={DarkMode} />
         <div className='mt-2 xl:mt-3 '>
           {

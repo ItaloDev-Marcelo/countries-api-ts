@@ -41,7 +41,7 @@ const DetailsSection = ({
   toggle
 }: DetailsProps) => {
   return (
-    <section className={`w-full h-[100vh] pt-4  z-10000 p-2 flex felx-col lg:flex-row ${toggle ? 'bg-Blue-950  text-white' : ' text-Grey-950 bg-Grey-50'} `}>
+    <section className={`w-full h-[100%] pt-4  z-10000 p-2 flex felx-col lg:flex-row ${toggle ? 'bg-Blue-950  text-white' : ' text-Grey-950 bg-Grey-50'} `}>
       <div className="flex flex-col xl:flex-row justify-between ">
         <div>
           <button
