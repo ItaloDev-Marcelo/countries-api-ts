@@ -12,7 +12,7 @@ const CountryPageLayout = () => {
     const [selectValue, setSelectValue] = useState('');
     const [currentSelectedCard, setCurrentSelectedCard] = useState<string>('')
     const [details, setDetails] = useState(false)
-    const [showAll, setShowAll] = useState(false)
+    const [seeMore, setSeeMore] = useState(1)
   
     const DarkMode  = () => setToggle(prevToggle => !prevToggle)
   
@@ -28,12 +28,28 @@ const CountryPageLayout = () => {
    }
 
    const handleMore = () => {
-      setShowAll(true)
+      setSeeMore(prev => prev + 1)
    }
 
    const Result = FilteringData(inputValue,selectValue)
 
-   const DisplayCards = showAll ? Result : Result.slice(0, 8)
+
+
+   const  DisplayCardsT = (num: number) => {
+        switch(num) {
+          case 1:
+            return   Result.slice(0, 8)
+          case 2: 
+             return   Result.slice(0, 16)
+          case 3: 
+             return   Result.slice(0, 24)
+          case 4 :
+            return    Result 
+        }
+   }
+
+   const DisplayCards = DisplayCardsT(seeMore)
+
 
   
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +84,7 @@ const CountryPageLayout = () => {
             !details && <><Form handleSearch={handleSearch} toggle={toggle}  handleSelect={handleSelect} />
            <MainWrapper>
                 {
-                  DisplayCards.map((item) => (
+                  DisplayCards?.map((item) => (
                         <Card
                         id={item.numericCode} 
                         name={item.name} 
