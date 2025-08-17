@@ -1,0 +1,1 @@
+export interface DropdownProps {handleSelect: (value: string) => void, toggle: boolean }

@@ -1,12 +1,6 @@
-
+import type { FormProps } from '../types/FormType';
 import Dropdown from './Dropdown';
 import ISearch from './ISearch'
-
-interface FormProps  {
-  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void, 
-  handleSelect: (value: string) => void,
-  toggle: boolean
-}
 
 const Form = ({handleSearch,handleSelect, toggle}:FormProps) => {
   return (

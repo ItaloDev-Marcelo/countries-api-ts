@@ -1,6 +1,6 @@
 import { FaSearch } from "react-icons/fa";
-interface FormProps  {handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void, toggle: boolean}
-const ISearch = ({handleSearch, toggle}:FormProps) => {
+import type { SearchProps } from "../types/SearchType";
+const ISearch = ({handleSearch, toggle}:SearchProps) => {
   return (
     <div className={`flex flex-row rounded-[5px] items-center mb-5 shadow md:mb-0 transition duration-700 ease-in-out
     w-full md:w-[50%] xl:w-[400px] h-[45px] p-3 ${toggle ? 'bg-Blue-900 text-Grey-50' : 'bg-White-zero text-Grey-950 '} `}>

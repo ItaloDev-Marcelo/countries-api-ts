@@ -1,7 +1,7 @@
 import Button from "../components/Button";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import type { DropdownProps } from "../types/DropdownType";
 
-interface DropdownProps {handleSelect: (value: string) => void, toggle: boolean }
 const Dropdown = ({handleSelect, toggle}:DropdownProps ) => {
   return (
     <details className="dropdown w-50">

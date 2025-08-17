@@ -1,29 +1,5 @@
 import { FaArrowLeft } from "react-icons/fa6";
-interface Currency {
-  code: string,
-  name: string,
-  symbol: string,
-}
-
-interface Language {
-  name: string,
-}
-
-interface DetailsProps {
-  name: string,
-  nativeName: string,
-  population: number,
-  region: string,
-  subregion: string,
-  currencies: Currency[],
-  capital: string,
-  svg: string,
-  topLevelDomain: string[],
-  languages: Language[],
-  borders: string[],
-  HideDetails: () => void,
-  toggle: boolean
-}
+import type { DetailsProps } from "../types/DetailsTypes";
 
 const DetailsSection = ({
   name,

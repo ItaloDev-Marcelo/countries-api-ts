@@ -1,0 +1,1 @@
+export interface SearchProps  {handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void, toggle: boolean}
