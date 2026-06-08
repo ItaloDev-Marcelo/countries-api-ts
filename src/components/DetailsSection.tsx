@@ -21,18 +21,19 @@ const DetailsSection = ({
       <div className="flex flex-col xl:flex-row justify-between ">
         <div>
           <button
-            className="flex items-center justify-center border-1 w-[100px] h-[40px] ml-2 lg:ml-13"
+            className="flex items-center justify-center border-1 cursor-pointer w-[100px]  h-[40px] ml-2 lg:ml-13"
             onClick={HideDetails}
+            type='button'
           >
             {" "}
             <FaArrowLeft size={15} className='mr-2' /> Back
           </button>
 
-          <figure className="flex flex-col w-full   xl:w-[500px] p-3 lg:ml-7 mt-10">
+          <figure className="flex flex-col w-full lg:mt-15   xl:w-[500px] p-3 lg:ml-7 mt-10">
             <img src={svg} alt={name} />
           </figure>
         </div>
-        <section className="lg:w-[670px] p-2.5 lg:p-15 lg:mt-10 xl:ml-4 ">
+        <section className="lg:w-[670px] p-2.5 lg:p-15 lg:mt-8 xl:ml-4 ">
           <h3 className="font-black text-[1.4em] my-4">{name}</h3>
           <div className="md:grid md:grid-cols-2">
             <ul className="my-5 ">
@@ -82,7 +83,7 @@ const DetailsSection = ({
             </h4>
             <div className="grid grid-cols-2 tb:grid-cols-3 lg:grid-cols-4 items-start gap-2 lg:gap-col-2">
               {borders?.map((item) => (
-                <div className="w-[150px] md:w-[190px] lg:w-[130px] flex flex-col text-center justify-center border-1 h-[40px] font-bold">
+                <div className="w-[150px] md:w-[190px] lg:w-[130px] flex flex-col text-center justify-center border-1 h-[40px] font-bold cursor-pointer">
                   {item}
                 </div>
               ))}
