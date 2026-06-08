@@ -15,7 +15,8 @@ const CountryPageLayout = () => {
     const [seeMore, setSeeMore] = useState(1)
   
     const DarkMode  = () => setToggle(prevToggle => !prevToggle)
-  
+    const handleMore = () => setSeeMore(prev => prev + 1)
+   
 
    function FilteringData(input:string, select:string) {
      if(input.length == 0 && select.length == 0) {
@@ -27,18 +28,13 @@ const CountryPageLayout = () => {
      }
    }
 
-   const handleMore = () => {
-      setSeeMore(prev => prev + 1)
-   }
 
    const Result = FilteringData(inputValue,selectValue)
 
-
-
-   const  DisplayCardsT = (num: number) => {
+   const  SliceBySeeMoreResult = (num: number) => {
         switch(num) {
           case 1:
-            return   Result.slice(0, 8)
+            return    Result.slice(0, 8)
           case 2: 
              return   Result.slice(0, 16)
           case 3: 
@@ -48,7 +44,7 @@ const CountryPageLayout = () => {
         }
    }
 
-   const DisplayCards = DisplayCardsT(seeMore)
+   const DisplayCards = SliceBySeeMoreResult(seeMore)
 
 
   
@@ -79,10 +75,12 @@ const CountryPageLayout = () => {
   return (
     <div className={toggle ? 'bg-Blue-950 transition duration-700 ease-in-out ' : 'bg-Grey-50 transition duration-700 ease-in-out'}>
         <Header toggle={toggle} DarkMode={DarkMode} />
+
         <div className='mt-2 xl:mt-3 '>
           {
-            !details && <><Form handleSearch={handleSearch} toggle={toggle}  handleSelect={handleSelect} />
-           <MainWrapper>
+            !details && <div className='lg:p-3'>
+            <Form handleSearch={handleSearch} toggle={toggle}  handleSelect={handleSelect} />
+            <MainWrapper>
                 {
                   DisplayCards?.map((item) => (
                         <Card
@@ -99,9 +97,10 @@ const CountryPageLayout = () => {
                 }
             </MainWrapper>
                 <div className='w-full flex justify-center my-4 '>   
-                   <button onClick={handleMore} className={`text-center font-semibold h-[45px] w-[100px] my-3.5  rounded-[5px] ${toggle ? 'bg-Blue-900  text-white ' : 'bg-Grey-50 text-Grey-950'}`}>More</button>
-          </div>
-             </>
+                   <button onClick={handleMore} className={`text-center font-semibold h-[45px] w-[100px] my-3.5  rounded-[5px] 
+                     ${toggle ? ' bg-gray-500  text-white ' : 'bg-blue-300 text-white'}`}>More</button>
+                </div>
+             </div>
           }
          
            {selected && (
@@ -116,7 +115,7 @@ const CountryPageLayout = () => {
   topLevelDomain={selected.topLevelDomain}
   languages={selected.languages ?? []}
   borders={selected.borders ?? []}
-   toggle={toggle}
+                toggle={toggle}
   />
            )}
         </div>
