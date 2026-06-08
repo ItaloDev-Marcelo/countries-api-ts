@@ -97,7 +97,7 @@ const CountryPageLayout = () => {
                 }
             </MainWrapper>
                 <div className='w-full flex justify-center my-4 '>   
-                   <button onClick={handleMore} className={`text-center font-semibold h-[45px] w-[100px] my-3.5  rounded-[5px] 
+                   <button type='button' onClick={handleMore} className={`text-center font-semibold h-[45px] w-[100px] my-3.5  rounded-[5px] 
                      ${toggle ? ' bg-gray-500  text-white ' : 'bg-blue-300 text-white'}`}>More</button>
                 </div>
              </div>
